@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dy.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.dy.entity.SysUserEntity">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="userName" jdbcType="VARCHAR" property="userName" />
+        <result column="passWord" jdbcType="VARCHAR" property="passWord" />
+        <result column="realName" jdbcType="VARCHAR" property="realName" />
+    </resultMap>
+
+
+    <select id="queryList" resultType="com.dy.entity.SysUserEntity">
+        select * from sys_user u
+        <where>
+            <if test="userName != null">
+                and u.user_name like #{userName}
+            </if>
+        </where>
+        order by u.create_time desc
+    </select>
+
+
+    <select id="queryByUserName" resultType="com.dy.entity.SysUserEntity">
+        select user_name,user_realname from sys_user u
+        <where>
+            <if test="userName != null">
+                u.user_name = #{userName}
+            </if>
+            <if test="userPassword != null">
+                and u.user_password = #{userPassword}
+            </if>
+                and status = 0
+        </where>
+    </select>
+
+    <select id="queryNewUserTotel" resultType="int">
+        select count(1) from sys_user u where u.user_name = #{userName}
+    </select>
+
+    <insert id="addUser" parameterType="com.dy.entity.SysUserEntity" useGeneratedKeys="true" keyProperty="userId">
+		insert into sys_user
+		(
+			`user_name`,
+			`user_password`,
+			`user_realname`,
+			`create_time`,
+			`status`,
+			`user_phone`
+		)
+		values
+		(
+			#{userName},
+			#{userPassword},
+			#{userRealname},
+			#{createTime},
+			0,
+			#{userPhone}
+		)
+	</insert>
+
+    <update id="addUpdate" parameterType="com.dy.entity.SysUserEntity">
+        update sys_user
+        <set>
+            <if test="userName != null">`user_name` = #{userName}, </if>
+            <if test="userPhone != null">`user_phone` = #{userPhone}, </if>
+            <if test="status != null">`status` = #{status}, </if>
+            <if test="userRealname != null">`user_realname` = #{userRealname}</if>
+        </set>
+        where user_id = #{userId}
+    </update>
+
+    <delete id="deleteBatch">
+    delete from sys_user where user_id in
+    <foreach item="id" collection="array" open="(" separator="," close=")">
+        #{id}
+    </foreach>
+</delete>
+</mapper>

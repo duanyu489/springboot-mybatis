@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>读写本地文件</title>
+    <script src="../jquery/jquery.min.js"></script>
+</head>
+<body>
+   <div id="content">
+
+   </div>
+   <button onclick="realFiles();">读取本地文件</button>
+</body>
+
+<script>
+    $(function () {
+        $.ajax({
+            type: "POST",
+            url:"../file/readFile",
+            data:{},
+            dataType: "json",
+            success: function(result){
+               /* if(result.code == 0){
+                    layer.close(index);
+                    layer.alert('更新成功', function(index){
+                        location.reload();
+                    });
+                }else{
+                    layer.alert(result.msg);
+                }*/
+            }
+        });
+    });
+
+    function realFiles() {
+        alert("11");
+    }
+</script>
+</html>

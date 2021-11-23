@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dy.mapper.CaipiaoMapper">
+    <resultMap id="BaseResultMap" type="com.dy.entity.CaipiaoEntity">
+        <result column="c_id" jdbcType="INTEGER" property="cId" />
+        <result column="c_num_1" jdbcType="VARCHAR" property="cNum1" />
+        <result column="c_num_2" jdbcType="VARCHAR" property="cNum2" />
+        <result column="c_num_3" jdbcType="VARCHAR" property="cNum3" />
+        <result column="c_num_4" jdbcType="VARCHAR" property="cNum4" />
+        <result column="c_num_5" jdbcType="VARCHAR" property="cNum5" />
+        <result column="c_num_6" jdbcType="VARCHAR" property="cNum6" />
+        <result column="c_num_last" jdbcType="VARCHAR" property="cNumLast" />
+        <result column="c_date" jdbcType="VARCHAR" property="cDate" />
+    </resultMap>
+
+    <select id="queryList" resultType="com.dy.entity.CaipiaoEntity">
+        select * from t_caipiao  order by c_date desc
+    </select>
+
+    <select id="queryNum" resultType="int">
+        select count(*) from (
+                select concat(c_num_1,c_num_2,c_num_3,c_num_4,c_num_5,c_num_6) tonum from t_caipiao
+                )a where a.tonum = #{p1}
+    </select>
+
+</mapper>

@@ -1,0 +1,48 @@
+.differ {
+    background-color: #e7fafe;
+}
+.search-input{
+    width: 200px;height: 30px;border-radius: 10px;margin-left: 15px;
+    border:1px solid #ccc;background-color: transparent;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+input:focus{
+    border-color: #66afe9;outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6) ;
+}
+#jqGrid tr td{
+    text-align:center;
+}
+.ui-th-column{text-align:center;}
+
+
+.demoRadio{
+    display: none;
+}
+.radioInput{
+    display: inline-block;
+    width:30px;
+    height:30px;
+    border:2px solid green;
+    border-radius:100%;
+    margin-right:10px;
+    vertical-align: middle;
+}
+.demoRadio:checked + .radioInput:after{
+    content:"";
+    display: inline-block;
+    width:30px;
+    height:30px;
+    background:#00a1e9;
+    border-radius:100%;
+    margin-top:-3px;
+    margin-left:-2px;
+}
+.demoRadio:checked + .radioInput{
+    border:2px solid #00a1e9;
+}

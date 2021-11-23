@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>用户信息</title>
+    <link rel="stylesheet" href="../from/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../from/css/ui.jqgrid-bootstrap.css">
+    <link href="../Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../ztree/css/metroStyle/metroStyle.css">
+    <link rel="stylesheet" href="../css/common.css">
+
+    <script type="text/javascript" src="../from/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../from/js/vue.min.js"></script>
+    <script type="text/javascript" src="../from/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../from/js/jquery.jqGrid.min.js"></script>
+    <script type="text/javascript" src="../from/js/grid.locale-cn.js"></script>
+    <script type="text/javascript" src="../from/js/common.js"></script>
+    <script type="text/javascript" src="../from/js/layer.js"></script>
+<style>
+    #jqGrid tr td{
+        text-align:center;
+        font-size:16px;
+    }
+    .ui-jqgrid tr.jqgrow td {
+        white-space: normal !important;
+        height:auto;
+        vertical-align:text-top;
+        display: table-cell;
+        vertical-align: middle;
+    }
+</style>
+</head>
+<body style="overflow-y: hidden;overflow-x: hidden">
+<div id="rrapp">
+    <div class="grid-btn">
+        <input id="userName" type="text" autocomplete="off" placeholder="登录账号" class="search-input" />
+        <button type="button" class="btn btn-info" @click="search"><i class="icon-search"></i> 查询</button>
+        <button type="button"  class="btn btn-primary" @click="add"><i class="icon-plus"></i> 新增用户</button>
+        <!--<button type="button"  class="btn btn-warning" @click="update">修改</button>-->
+        <button type="button"  class="btn btn-danger"  @click="del"><i class="icon-trash"></i> 批量删除</button>
+
+    </div>
+    <table id="jqGrid"></table>
+
+    <div style="position:fixed;left:0px; bottom:0; _position:absolute;" id="jqGridPager"></div>
+
+    <!--新增-->
+    <div id="passwordLayer" style="width:75%;margin-left:25px;display: none;">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <div class="form-group">
+                    <div class="col-sm-4 control-label"><span style="color: red;">*</span>登录账号：</div>
+                    <!--<span class="label label-success" style="vertical-align: bottom;">{{user.username}}</span>-->
+                    <div class="col-sm-8">
+                        <!--<input type="password" class="form-control" v-model="password" placeholder="原密码"/>-->
+                        <input type="text" class="form-control" v-model="sysUser.userName" placeholder="登录账号"/>
+                    </div>
+                </div>
+                <div class="form-group" id="passwordinput">
+                    <div class="col-sm-4 control-label"><span style="color: red;">*</span>登录密码：</div>
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control" v-model="sysUser.userPassword"  placeholder="登录密码"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4 control-label"><span style="color: red;">*</span>真实姓名：</div>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" v-model="sysUser.userRealname" placeholder="真实姓名"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4 control-label">联系电话：</div>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" v-model="sysUser.userPhone" placeholder="联系电话"/>
+                    </div>
+                </div>
+
+                <div class="form-group" id="userStatus">
+                    <div class="col-sm-4 control-label">用户状态：</div>
+                    <div class="col-sm-8">
+                        <label>
+                            <input type="radio" name="userstatus" class="demoRadio" value="0">
+                            <span class="radioInput"></span>正常
+                        </label>
+                        <label>
+                            <input type="radio" name="userstatus" class="demoRadio" value="1">
+                            <span class="radioInput"></span>禁用
+                        </label>
+                    </div>
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script src="../js/sys/user.js"></script>
+</body>
+</html>

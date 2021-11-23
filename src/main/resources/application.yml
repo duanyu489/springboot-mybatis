@@ -1,0 +1,17 @@
+spring:
+  profiles:
+    active: dev
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+
+
+server:
+  servlet:
+    context-path: /my
+
+#开启驼峰
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <title>彩票管理</title>
+    <link rel="stylesheet" href="../from/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../from/css/ui.jqgrid-bootstrap.css">
+    <link href="../Content/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="../ztree/css/metroStyle/metroStyle.css">
+  <!--  <link rel="stylesheet" href="../from/js/skin/default/layer.css">-->
+    <!--
+        <link rel="stylesheet" href="../from/css/metroStyle.css">
+        <link rel="stylesheet" href="../from/css/main.css">
+        <link rel="stylesheet" href="../from/js/skin/default/layer.css">-->
+
+    <script type="text/javascript" src="../from/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../from/js/vue.min.js"></script>
+    <script type="text/javascript" src="../from/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../from/js/jquery.jqGrid.min.js"></script>
+    <script type="text/javascript" src="../from/js/grid.locale-cn.js"></script>
+    <!--<script type="text/javascript" src="../from/js/jquery.datetimepicker.full.min.js"></script>-->
+    <script type="text/javascript" src="../from/js/common.js"></script>
+    <script type="text/javascript" src="../from/js/laydate.js"></script>
+    <script type="text/javascript" src="../from/js/layer.js"></script>
+
+    <script type="text/javascript" src="../ztree/jquery.ztree.all.min.js"></script>
+   <!-- <script type="text/javascript" src="../from/js/d3.js"></script>
+    <script type="text/javascript" src="../from/js/d3.min.js"></script>-->
+
+</head>
+<body style="overflow-y: hidden;overflow-x: hidden">
+<div id="rrapp">
+    <div class="grid-btn">
+        <button type="button"  class="btn btn-primary" >新增 <i class="icon-zoom-in"></i></button>
+        <button type="button"  class="btn btn-warning" >修改</button>
+        <button type="button"  class="btn btn-danger"  >删除</button>
+        <span id="starttimespan"><input id="xjDate" style="height:32px;width:200px;" /></span>
+        <button type="button" class="btn btn-info" @click="search">预测下一期中奖号码</button>
+    </div>
+    <table id="jqGrid"></table>
+
+    <div style="position:fixed;left:0px; bottom:0; _position:absolute;" id="jqGridPager"></div>
+</div>
+<script src="../js/sys/caipiao.js"></script>
+</body>
+</html>
